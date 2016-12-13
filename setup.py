@@ -60,7 +60,7 @@ with VenvLinkDeleted():
         version=get_version('amp_tools'),
         packages=[
             PROJECT_NAME,
-            '{0}.tests'.format(PROJECT_NAME),
+            '{0}.templatetags'.format(PROJECT_NAME),
         ],
         package_data={PROJECT_NAME: data_files},
         include_package_data=True,
