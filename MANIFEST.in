@@ -1,0 +1,8 @@
+include AUTHORS
+include LICENSE.md
+include Makefile
+include MANIFEST.in
+include README.rst
+recursive-include docs *
+recursive-include tests *
+recursive-include amp_tools/templatetags *

@@ -5,6 +5,8 @@ join_to_project = lambda slug: os.path.join(PROJECT_ROOT, slug)
 
 SECRET_KEY = 'amp-tools-key'
 
+DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3'}}
+
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',

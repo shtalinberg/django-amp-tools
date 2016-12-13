@@ -1,18 +1,25 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+import re
+from distutils.core import setup
 
 PROJECT_NAME = 'amp_tools'
 ROOT = os.path.abspath(os.path.dirname(__file__))
 VENV = os.path.join(ROOT, '.venv')
 VENV_LINK = os.path.join(VENV, 'local')
 
-project = __import__(PROJECT_NAME)
-
 install_requires = [
     'django>=1.8.0',
 ]
 
+
+def get_version(package):
+    """
+    Return package version as listed in `__version__` in `init.py`.
+    """
+    init_py = open(os.path.join(package, '__init__.py')).read()
+    return re.search("__version__ = ['\"]([^'\"]+)['\"]", init_py).group(1)
 
 
 data_files = []
@@ -50,10 +57,10 @@ class VenvLinkDeleted(object):
 with VenvLinkDeleted():
     setup(
         name='django-amp-tools',
-        version=project.get_version(),
+        version=get_version('amp_tools'),
         packages=[
             PROJECT_NAME,
-            '{0}.tests'.format(PROJECT_NAME),
+            '{0}.templatetags'.format(PROJECT_NAME),
         ],
         package_data={PROJECT_NAME: data_files},
         include_package_data=True,
@@ -69,7 +76,7 @@ with VenvLinkDeleted():
             'Environment :: Web Environment',
             'Framework :: Django',
             'Intended Audience :: Developers',
-            'License :: OSI Approved :: MIT License', # example license
+            'License :: OSI Approved :: MIT License',  # example license
             'Operating System :: OS Independent',
             'Programming Language :: Python',
             # Replace these appropriately if you are stuck on Python 2.
