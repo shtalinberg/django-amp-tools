@@ -31,7 +31,7 @@ class defaults(object):
 
     AMP_TOOLS_TEMPLATE_LOADERS = []
 
-    if django.VERSION[0] < 2 and django.VERSION[1] < 8 :
+    if django.VERSION[0] < 2 and django.VERSION[1] < 8:
         TEMPLATES = django_settings.TEMPLATE_LOADERS
     else:
         TEMPLATES = django_settings.TEMPLATES[0]['OPTIONS']['loaders']

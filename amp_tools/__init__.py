@@ -3,15 +3,7 @@
 import threading
 from amp_tools.settings import settings
 
-VERSION = (0, 1, 0)
-
-
-def get_version():
-    """Return the app version as a string."""
-    return '.'.join(map(str, VERSION))
-
-__version__ = get_version()
-
+__version__ = '0.1.0'
 
 _local = threading.local()
 

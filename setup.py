@@ -13,6 +13,15 @@ install_requires = [
     'django>=1.8.0',
 ]
 
+
+def get_version(package):
+    """
+    Return package version as listed in `__version__` in `init.py`.
+    """
+    init_py = open(os.path.join(package, '__init__.py')).read()
+    return re.search("__version__ = ['\"]([^'\"]+)['\"]", init_py).group(1)
+
+
 data_files = []
 for dirpath, dirnames, filenames in os.walk(PROJECT_NAME):
     for i, dirname in enumerate(dirnames):
@@ -48,7 +57,7 @@ class VenvLinkDeleted(object):
 with VenvLinkDeleted():
     setup(
         name='django-amp-tools',
-        version=project.get_version(),
+        version=get_version('amp_tools'),
         packages=[
             PROJECT_NAME,
             '{0}.tests'.format(PROJECT_NAME),
