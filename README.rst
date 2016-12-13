@@ -36,3 +36,6 @@ is enabled and working.
    ``MIDDLEWARE_CLASSES`` setting.
 4. Add ``amp_tools.loader.Loader`` as first item to your
    ``loaders`` list for ``TEMPLATES`` setting in ``settings.py``.
+   
+   
+Pull requests are welcome.   

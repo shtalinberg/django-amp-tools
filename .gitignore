@@ -1,0 +1,11 @@
+build/
+*.py[cod]
+doc/_build
+*.sublime-*
+/help-man
+dist/
+~$
+.venv*
+.coverage
+.DS_Store
+MANIFEST
