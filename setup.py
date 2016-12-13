@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+import re
 from distutils.core import setup
 
 PROJECT_NAME = 'amp_tools'
