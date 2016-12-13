@@ -9,7 +9,6 @@ from amp_tools.settings import settings
 from amp_tools.compat import BaseLoader, template_loader, template_from_string
 
 
-
 class Loader(BaseLoader):
     is_usable = True
     _template_source_loaders = None

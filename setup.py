@@ -7,8 +7,6 @@ ROOT = os.path.abspath(os.path.dirname(__file__))
 VENV = os.path.join(ROOT, '.venv')
 VENV_LINK = os.path.join(VENV, 'local')
 
-project = __import__(PROJECT_NAME)
-
 install_requires = [
     'django>=1.8.0',
 ]
