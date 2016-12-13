@@ -9,6 +9,7 @@ VENV3 = .venv3
 
 LINTER = flake8 --show-source amp_tools/ tests/
 MANAGE = python ./tests/manage.py
+RUNTESTS = python ./runtests.py
 
 ifdef PY3
 	PYTHON = $(PYTHON3)
@@ -27,7 +28,7 @@ all: develop
 $(DOC_INDEX): $(wildcard docs/*.rst)
 	@$(WITH_VENV) make -C doc html
 
-doc: develop $(DOC_INDEX)
+docs: develop $(DOC_INDEX)
 
 clean:
 	$(PYTHON) setup.py clean
@@ -96,7 +97,7 @@ source:
 	$(PYTHON) setup.py sdist
 
 test: develop
-	@$(WITH_VENV) $(MANAGE) test
+	@$(WITH_VENV) $(RUNTESTS) test
 
-.PHONY: all doc clean cleanall check develop install lint opendoc release \
+.PHONY: all docs clean cleanall check develop install lint opendoc release \
 	server shell source test

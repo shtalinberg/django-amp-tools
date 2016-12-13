@@ -13,8 +13,6 @@ install_requires = [
     'django>=1.8.0',
 ]
 
-
-
 data_files = []
 for dirpath, dirnames, filenames in os.walk(PROJECT_NAME):
     for i, dirname in enumerate(dirnames):
@@ -69,7 +67,7 @@ with VenvLinkDeleted():
             'Environment :: Web Environment',
             'Framework :: Django',
             'Intended Audience :: Developers',
-            'License :: OSI Approved :: MIT License', # example license
+            'License :: OSI Approved :: MIT License',  # example license
             'Operating System :: OS Independent',
             'Programming Language :: Python',
             # Replace these appropriately if you are stuck on Python 2.
