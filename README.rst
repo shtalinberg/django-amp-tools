@@ -2,12 +2,24 @@
 django-amp-tools
 ================
 
-|build| |package|
+.. image:: https://travis-ci.org/shtalinberg/django-amp-tools.svg?branch=develop
+    :target: https://travis-ci.org/shtalinberg/django-amp-tools
+
+.. image:: https://img.shields.io/pypi/v/django-amp-tools.svg
+    :target:  https://pypi.python.org/pypi/django-amp-tools/
+
+.. image:: https://img.shields.io/pypi/pyversions/django-amp-tools.svg
+
+.. image:: https://img.shields.io/badge/django-1.8%20or%20newer-green.svg
+
+.. image:: https://img.shields.io/pypi/dm/django-amp-tools.svg
+    :target:  https://pypi.python.org/pypi/django-amp-tools/
+
 
 .. _introduction:
 
-**django-amp-tools** ( amp_tools ) provides a simple way to work with Accelerated mobile pages (AMP) 
-in django and gives you tools at your hand to render some different templates 
+**django-amp-tools** ( amp_tools ) provides a simple way to work with Accelerated mobile pages (AMP)
+in django and gives you tools at your hand to render some different templates
 to deliver an AMP version of your site to the user.
 
 The idea (from django-mobile app) is to keep your views exactly the same but to transparently
@@ -36,6 +48,6 @@ is enabled and working.
    ``MIDDLEWARE_CLASSES`` setting.
 4. Add ``amp_tools.loader.Loader`` as first item to your
    ``loaders`` list for ``TEMPLATES`` setting in ``settings.py``.
-   
-   
-Pull requests are welcome.   
+
+
+Pull requests are welcome.

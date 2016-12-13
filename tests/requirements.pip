@@ -1,0 +1,9 @@
+# Django AMP Tools test requirements.
+# Dependencies are installed by the ``make`` command.
+
+django-nose==1.4.4
+coverage==4.2
+flake8==2.6.2
+ipdb==0.10.1
+sphinx==1.4.5
+django-test-without-migrations==0.4

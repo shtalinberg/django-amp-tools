@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 
-__author__ = u'Oleksandr Shtalinberg'
-__version__ = '0.1.0'
-
 import threading
+from amp_tools.settings import settings
+
+VERSION = (0, 1, 0)
+
+
+def get_version():
+    """Return the app version as a string."""
+    return '.'.join(map(str, VERSION))
+
+__version__ = get_version()
+
 
 _local = threading.local()
-
-from amp_tools.settings import settings
 
 
 def set_amp_detect(is_amp_detect=False, request=None):
