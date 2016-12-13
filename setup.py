@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+from distutils.core import setup
 
 PROJECT_NAME = 'amp_tools'
 ROOT = os.path.abspath(os.path.dirname(__file__))
