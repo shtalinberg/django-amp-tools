@@ -167,7 +167,7 @@ changed in your own ``settings.py``:
         render_to_string('index.html') # will render 'amp/index.html'
 
         # now add this to settings.py
-        FLAVOURS_TEMPLATE_PREFIX = 'amp-new/'
+        AMP_TOOLS_TEMPLATE_PREFIX = 'amp-new/'
 
         # and try again
 
