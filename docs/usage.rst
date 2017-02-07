@@ -134,13 +134,6 @@ See result of this code here::
 http://bergsoftplus.com/weblog/2016/11/28/internet-bezopasnost-pri-onlajn-pokupkah-20/?amp-content=amp
 
 
-AMP_TOOLS_TEMPLATE_FOLDER = u'amp'
-    AMP_TOOLS_TEMPLATE_PREFIX = u''
-    AMP_TOOLS_GET_PARAMETER = u'amp-content'
-    AMP_TOOLS_GET_VALUE = u'amp'
-
-    AMP_TOOLS_TEMPLATE_LOADERS = []
-
 Settings
 --------
 
@@ -150,11 +143,15 @@ Here is a list of settings that are used by **django-amp-tools** and can be
 changed in your own ``settings.py``:
 
 ``AMP_TOOLS_GET_PARAMETER``
-    The flavour which is chosen if the built-in ``AMPDetectionMiddleware``
-    select AMP version.
+    The name of GET parameter which check in ``AMPDetectionMiddleware``.
 
     **Default:** ``'amp-content'``
 
+``AMP_TOOLS_GET_VALUE``
+    The value of GET parameter which check in ``AMPDetectionMiddleware``.
+    select AMP version.
+
+    **Default:** ``'amp'``
 
 ``AMP_TOOLS_TEMPLATE_PREFIX``
     This string will be prefixed to the template names when searching for
@@ -187,22 +184,3 @@ changed in your own ``settings.py``:
     **Default:** same as ``TEMPLATE_LOADERS`` setting but without
     ``'amp_tools.loader.Loader'``.
 
-``FLAVOURS_GET_PARAMETER``
-    Users can change the flavour they want to look at with a HTTP GET
-    parameter.  This determines the name of this parameter.  Set it to
-    ``None`` to disable.
-
-    **Default:** ``'flavour'``
-
-``FLAVOURS_SESSION_KEY``
-    The user's preference set with the GET parameter is stored in the user's
-    session. This setting determines which session key is used to hold this
-    information.
-
-    **Default:** ``'flavour'``
-
-``FLAVOURS_STORAGE_BACKEND``
-    Determines how the selected flavour is stored persistently. Available
-    values: ``'session'`` and ``'cookie'``.
-
-    **Default:** ``'cookie'``
