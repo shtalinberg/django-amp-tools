@@ -23,5 +23,6 @@ Contents:
    :maxdepth: 2
 
    installation
+   usage
    contributing
    contacts
