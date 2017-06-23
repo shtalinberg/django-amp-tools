@@ -2,7 +2,7 @@
 import threading
 
 from django.test import TestCase
-from django.template import Template, Context
+from django.template import Template, RequestContext
 
 from mock import MagicMock, Mock, patch, call
 
@@ -54,9 +54,15 @@ class DetectAMPMiddlewareTests(BaseTestCase):
         self.assertEqual(set_amp_detect.call_args, call(is_amp_detect=True, request=request))
 
     def test_tamplate_tags(self):
+        request = Mock()
+        request.META = MagicMock()
+        request.GET = {'amp-content': 'amp'}
+        middleware = AMPDetectionMiddleware()
+        middleware.process_request(request)
+
         rendered = Template(
             '{% load amp_tags %}{% amp_link "/path/" %}'
-        ).render(Context({}))
+        ).render(RequestContext(request, {}))
 
         self.assertEqual(
             rendered,
