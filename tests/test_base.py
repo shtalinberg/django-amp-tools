@@ -2,6 +2,7 @@
 import threading
 
 from django.test import TestCase
+from django.conf import settings
 
 from mock import MagicMock, Mock, patch, call
 
@@ -48,4 +49,13 @@ class DetectAMPMiddlewareTests(BaseTestCase):
         self.assertEqual(set_amp_detect.call_args, call(is_amp_detect=True, request=request))
 
     def test_tamplate_tags(self):
-        amp_link
+        request = Mock()
+        request.META = MagicMock()
+        request.GET = {}
+        middleware = AMPDetectionMiddleware()
+        middleware.process_request(request)
+
+        self.assertEqual(
+            amp_link('/path/'),
+            "/path/%s=%s" % (settings.AMP_TOOLS_GET_PARAMETER, settings.AMP_TOOLS_GET_VALUE)
+        )
