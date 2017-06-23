@@ -5,7 +5,7 @@ from amp_tools import set_amp_detect
 
 class AMPDetectionMiddleware(object):
 
-    def __init__(self, get_response):
+    def __init__(self, get_response=None):
         self.get_response = get_response
         # One-time configuration and initialization.
 
