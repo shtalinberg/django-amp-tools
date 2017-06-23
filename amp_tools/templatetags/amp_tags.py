@@ -33,23 +33,30 @@ def amp_canonical_link(request):
 
 
 class AddGetParameter(Node):
-    def __init__(self, values):
+    def __init__(self, values, url=None):
+        self.url = None
         self.values = values
 
     def render(self, context):
-        req = Variable('request').resolve(context)
-        params = req.GET.copy()
+        if self.url:
+            params = {}
+        else:
+            req = Variable('request').resolve(context)
+            self.url = req.path
+            params = req.GET.copy()
+
         for key, value in self.values.items():
             resolved = value.resolve(context)
             if resolved:
                 params[key] = value.resolve(context)
-        return '?%s' % params.urlencode()
+        return '%s?%s' % (self.url, params.urlencode())
 
 
 @register.tag
-def amp_link(parser):
+def add_get(parser, token):
+    url = token.split_contents()[1:]
     params = ["%s=%s" % (settings.AMP_TOOLS_GET_PARAMETER, settings.AMP_TOOLS_GET_VALUE)]
-    return AddGetParameter(params)
+    return AddGetParameter(params, url)
 
 
 @register.filter
