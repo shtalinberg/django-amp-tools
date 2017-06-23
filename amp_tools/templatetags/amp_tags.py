@@ -2,7 +2,6 @@
 from django import template
 from django.contrib.sites.models import Site
 from django.utils.safestring import mark_safe
-from django.utils.functional import keep_lazy_text
 from django.utils.encoding import force_text
 from django.template import Library, Node, Variable
 
@@ -51,3 +50,8 @@ class AddGetParameter(Node):
 def amp_link(parser):
     params = ["%s=%s" % (settings.AMP_TOOLS_GET_PARAMETER, settings.AMP_TOOLS_GET_VALUE)]
     return AddGetParameter(params)
+
+
+@register.filter
+def amp_urlparam(value):
+    return "%s?%s=%s" % (value, settings.AMP_TOOLS_GET_PARAMETER, settings.AMP_TOOLS_GET_VALUE)
