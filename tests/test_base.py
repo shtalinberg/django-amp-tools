@@ -53,14 +53,8 @@ class DetectAMPMiddlewareTests(BaseTestCase):
         self.assertEqual(set_amp_detect.call_args, call(is_amp_detect=True, request=request))
 
     def test_tamplate_tags(self):
-        request = Mock()
-        request.META = MagicMock()
-        request.GET = {}
-        middleware = AMPDetectionMiddleware()
-
-        middleware.process_request(request)
-
-        self.assertEqual(
-            amp_link('/path/'),
-            "/path/%s=%s" % (self.amp_get_parameter, self.amp_get_value)
+        rendered = self.render_template(
+            '{% load amp_tags %}'
+            '{% amp_link "/path/" %}'
         )
+        self.assertEqual(rendered, "\n/path/?%s=%s" % (self.amp_get_parameter, self.amp_get_value))
