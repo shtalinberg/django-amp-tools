@@ -12,8 +12,6 @@ django-amp-tools
 
 .. image:: https://img.shields.io/badge/django-1.8%20or%20newer-green.svg
 
-.. image:: https://img.shields.io/pypi/dm/django-amp-tools.svg
-    :target:  https://pypi.python.org/pypi/django-amp-tools/
 
 
 .. _introduction:
