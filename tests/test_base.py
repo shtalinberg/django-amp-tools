@@ -3,6 +3,7 @@ import threading
 
 from amp_tools.settings import settings as amp_setting
 from django.test import TestCase
+from django.template import Template, Context
 
 from mock import MagicMock, Mock, patch, call
 
@@ -33,6 +34,8 @@ class DetectAMPMiddlewareTests(BaseTestCase):
     def setUp(self):
         self.amp_get_parameter = amp_setting.AMP_TOOLS_GET_PARAMETER
         self.amp_get_value = amp_setting.AMP_TOOLS_GET_VALUE
+        TEMPLATE = Template("{% load blog_tags %} {% entry_history %}")
+
 
     def test_default_page(self):
         request = Mock()
@@ -53,8 +56,11 @@ class DetectAMPMiddlewareTests(BaseTestCase):
         self.assertEqual(set_amp_detect.call_args, call(is_amp_detect=True, request=request))
 
     def test_tamplate_tags(self):
-        rendered = self.render_template(
-            '{% load amp_tags %}'
-            '{% amp_link "/path/" %}'
+        rendered = Template(
+            '{% load amp_tags %}{% amp_link "/path/" %}'
+        ).render(Context({}))
+
+        self.assertEqual(
+            rendered,
+            "/path/?%s=%s" % (self.amp_get_parameter, self.amp_get_value)
         )
-        self.assertEqual(rendered, "\n/path/?%s=%s" % (self.amp_get_parameter, self.amp_get_value))
