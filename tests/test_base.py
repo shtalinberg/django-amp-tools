@@ -7,6 +7,8 @@ from mock import MagicMock, Mock, patch, call
 
 from amp_tools import get_amp_detect
 from amp_tools.middleware import AMPDetectionMiddleware
+from amp_tools.templatetags.amp_tags  import amp_link
+
 
 def _reset():
     '''
@@ -44,3 +46,6 @@ class DetectAMPMiddlewareTests(BaseTestCase):
         middleware = AMPDetectionMiddleware()
         middleware.process_request(request)
         self.assertEqual(set_amp_detect.call_args, call(is_amp_detect=True, request=request))
+
+    def test_tamplate_tags(self):
+        amp_link

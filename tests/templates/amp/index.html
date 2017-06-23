@@ -1,1 +1,44 @@
-AMP!
+<!doctype html>{% load i18n amp_tags %}{% load static from staticfiles %}
+<html amp lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>BERGSOFT+</title>
+    {% block amp-link %}{% amp_canonical_link request %}{% endblock %}
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>
+    {% block amp-custom %}
+        {% include "amp/includes/style_amp_custom.css" %}
+    {% endblock %}
+    </style>
+    {% block amp-ld-json %}{% endblock %}
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <header id="#top" class="amp-site-header">
+        <div>
+            <a href="{% url 'home_page' %}">
+                <amp-img src="{% static "images/v-2/logo.png" %}" width="145" height="35" class="amp-site-icon"></amp-img>
+                {% trans 'Web site development' %}
+            </a>
+        </div>
+    </header>
+    {% block content %}
+    <h1>AMP!</h1>
+    {% endblock %}
+
+    <footer class="amp-site-footer">
+        <div>
+            <h2>{% trans 'Web Development' %}</h2>
+            <p>
+                &copy;&nbsp;{% now "Y" %} {{ site.name }}. {% trans "All rights reserved" %}.
+            </p>
+            <a href="#top" class="back-to-top">{% trans "Back to top" %}</a>
+        </div>
+    </footer>
+  </body>
+</html>
+
+
+
