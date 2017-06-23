@@ -1,7 +1,6 @@
 
 import threading
 
-from amp_tools.settings import settings as amp_setting
 from django.test import TestCase
 from django.template import Template, Context
 
@@ -9,6 +8,7 @@ from mock import MagicMock, Mock, patch, call
 
 from amp_tools import get_amp_detect
 from amp_tools.middleware import AMPDetectionMiddleware
+from amp_tools.settings import settings as amp_setting
 from amp_tools.templatetags.amp_tags import amp_link
 
 
@@ -34,8 +34,6 @@ class DetectAMPMiddlewareTests(BaseTestCase):
     def setUp(self):
         self.amp_get_parameter = amp_setting.AMP_TOOLS_GET_PARAMETER
         self.amp_get_value = amp_setting.AMP_TOOLS_GET_VALUE
-        TEMPLATE = Template("{% load blog_tags %} {% entry_history %}")
-
 
     def test_default_page(self):
         request = Mock()
