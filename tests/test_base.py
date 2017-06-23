@@ -9,7 +9,7 @@ from mock import MagicMock, Mock, patch, call
 from amp_tools import get_amp_detect
 from amp_tools.middleware import AMPDetectionMiddleware
 from amp_tools.settings import settings as amp_setting
-from amp_tools.templatetags.amp_tags import amp_link
+
 
 
 def _reset():
