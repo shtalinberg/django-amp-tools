@@ -3,7 +3,7 @@
 import threading
 from amp_tools.settings import settings
 
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 
 _local = threading.local()
 
