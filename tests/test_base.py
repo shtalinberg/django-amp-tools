@@ -57,12 +57,11 @@ class DetectAMPMiddlewareTests(BaseTestCase):
         request = Mock()
         request.META = MagicMock()
         request.GET = {'amp-content': 'amp'}
-        middleware = AMPDetectionMiddleware()
-        middleware.process_request(request)
-
-        rendered = Template(
+        template = Template(
             '{% load amp_tags %}{% amp_link "/path/" %}'
-        ).render(RequestContext(request, {}))
+        )
+        context = RequestContext(request, {},)
+        rendered = template.render(context)
 
         self.assertEqual(
             rendered,
