@@ -61,6 +61,7 @@ class DetectAMPMiddlewareTests(BaseTestCase):
             '{% load amp_tags %}{% amp_link "/path/" %}'
         )
         context = RequestContext(request, {},)
+
         rendered = template.render(context)
 
         self.assertEqual(
