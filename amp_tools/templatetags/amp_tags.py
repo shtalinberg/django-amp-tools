@@ -45,10 +45,11 @@ class AddGetParameter(Node):
             self.url = req.path
             params = req.GET.copy()
 
-        for key, value in self.values.items():
-            resolved = value.resolve(context)
-            if resolved:
-                params[key] = value.resolve(context)
+            for key, value in self.values.items():
+                resolved = value.resolve(context)
+                if resolved:
+                    params[key] = value.resolve(context)
+
         return '%s?%s' % (self.url, params.urlencode())
 
 
