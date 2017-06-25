@@ -57,7 +57,7 @@ class AddGetParameter(Node):
 @register.tag
 def amp_link(parser, token):
     url = token.split_contents()[1:]
-    params = "%s=%s" % (value, settings.AMP_TOOLS_GET_PARAMETER, settings.AMP_TOOLS_GET_VALUE)
+    params = "%s=%s" % (settings.AMP_TOOLS_GET_PARAMETER, settings.AMP_TOOLS_GET_VALUE)
     return AddGetParameter(params, url)
 
 
