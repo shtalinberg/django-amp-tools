@@ -34,12 +34,12 @@ def amp_canonical_link(request):
 
 class AddGetParameter(Node):
     def __init__(self, values, url=None):
-        self.url = None
+        self.url = url
         self.values = values
 
     def render(self, context):
         if self.url:
-            params = {}
+            params = self.values
         else:
             req = Variable('request').resolve(context)
             self.url = req.path
