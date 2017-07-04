@@ -5,6 +5,7 @@ from django.http import QueryDict
 from django.utils.safestring import mark_safe
 from django.utils.encoding import force_text
 from django.template import Library, Node, Variable
+from django.template.defaultfilters import stringfilter
 
 register = template.Library()
 
@@ -64,3 +65,10 @@ def amp_link(parser, token):
 @register.filter
 def amp_urlparam(value):
     return "%s?%s=%s" % (value, settings.AMP_TOOLS_GET_PARAMETER, settings.AMP_TOOLS_GET_VALUE)
+
+
+@register.filter(name='amp_img')
+@stringfilter
+def amp_img(html_code):
+    """Convert <img> to <amp-img>"""
+    return html_code.replace("<img", "<amp-img")
