@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 
 from django import template
 from django.contrib.sites.models import Site
@@ -52,14 +53,27 @@ class AddGetParameter(Node):
                 if resolved:
                     params[key] = value.resolve(context)
 
-        return '%s?%s' % (self.url, params.urlencode())
+        return "{}?{}".format(self.url, params.urlencode())
 
 
 @register.tag
 def amp_link(parser, token):
-    url = token.split_contents()[1:][0]
-    params = "%s=%s" % (settings.AMP_TOOLS_GET_PARAMETER, settings.AMP_TOOLS_GET_VALUE)
-    return AddGetParameter(params, url)
+    try:
+        # split_contents() knows not to split quoted strings.
+        tag_name, url = token.split_contents()
+    except ValueError:
+        raise template.TemplateSyntaxError(
+            "%r tag requires a single argument" % token.contents.split()[0]
+        )
+    if not (url[0] == url[-1] and url[0] in ('"', "'")):
+        raise template.TemplateSyntaxError(
+            "%r tag's argument should be in quotes" % tag_name
+        )
+    params = "{}={}".format(
+        settings.AMP_TOOLS_GET_PARAMETER,
+        settings.AMP_TOOLS_GET_VALUE
+    )
+    return AddGetParameter(params, url[1:-1])
 
 
 @register.filter
