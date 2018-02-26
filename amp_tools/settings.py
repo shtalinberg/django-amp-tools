@@ -28,6 +28,8 @@ class defaults(object):
     AMP_TOOLS_TEMPLATE_PREFIX = ''
     AMP_TOOLS_GET_PARAMETER = 'amp-content'
     AMP_TOOLS_GET_VALUE = 'amp'
+    AMP_TOOLS_ACTIVE_URLS = []
+
 
     AMP_TOOLS_TEMPLATE_LOADERS = []
 
