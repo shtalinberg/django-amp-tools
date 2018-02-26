@@ -2,12 +2,9 @@ from __future__ import unicode_literals
 
 import threading
 
-<<<<<<< HEAD
-from django.test import TestCase
-from django.template import Template, RequestContext
-=======
 from django.test import TestCase, override_settings
->>>>>>> feature/allow_only_some_urls
+from django.template import Template, RequestContext
+
 
 from mock import MagicMock, Mock, patch, call
 
