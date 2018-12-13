@@ -96,7 +96,13 @@ def amp_img(html_code):
     """Convert <img> to <amp-img>"""
     img_elements = RE_IMG.findall(html_code)
     for img_el in img_elements:
-        replace_str = img_el.replace('/>','>').replace('>', ' layout="responsive"></amp-img>')
+        replace_str = img_el.replace('/>','>')
+
+        if not 'width=' in replace_str or not 'height=' in replace_str:
+            replace_str = replace_str.replace('>', ' layout="responsive" width="1.33" height="1"></amp-img>')
+        else:
+            replace_str = replace_str.replace('>', ' layout="responsive"></amp-img>')
+
         html_code = html_code.replace(img_el, replace_str)
     html_code = html_code.replace("</img>", "</amp-img>")
     return html_code.replace('<img', '<amp-img')
