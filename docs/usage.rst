@@ -83,7 +83,7 @@ create AMP version ``blog/tempplates/blog/amp/post_detail.html`` with content
 .. code-block:: html+django
 
     {% extends "base_amp.html" %}
-    {% load i18n blog_tags %}
+    {% load i18n blog_tags amp_tags %}
     {% load thumbnail staticfiles %}
 
     {% block content %}
@@ -109,7 +109,7 @@ create AMP version ``blog/tempplates/blog/amp/post_detail.html`` with content
         {% endif %}
 
         <div class="amp-post-article-content">
-            {{ post.body_html|safe }}
+            {{ post.body_html|amp_img|safe }}
         </div>
         <footer class="amp-post-article-footer">
             <div class="amp-post-meta amp-post-tax-category">
@@ -129,7 +129,7 @@ create AMP version ``blog/tempplates/blog/amp/post_detail.html`` with content
     </article>
     {% endblock %}
 
-
+we use filter `amp_img` to convert all <img> into <amp-img> from {% load amp_tags %}
 See result of this code here::
 http://bergsoftplus.com/weblog/2016/11/28/internet-bezopasnost-pri-onlajn-pokupkah-20/?amp-content=amp
 

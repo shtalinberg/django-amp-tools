@@ -11,6 +11,7 @@ from mock import MagicMock, Mock, patch, call
 from amp_tools import get_amp_detect
 from amp_tools.middleware import AMPDetectionMiddleware
 from amp_tools.settings import settings as amp_setting
+from amp_tools.templatetags.amp_tags import amp_img
 
 
 
@@ -71,9 +72,25 @@ class DetectAMPMiddlewareTests(BaseTestCase):
             "/path/?%s=%s" % (self.amp_get_parameter, self.amp_get_value)
         )
 
+        html_content = """
+            <html><body>
+                <img alt="alternate text" src="/media/uploads/img.png" style="width: 100%;">
+                <img alt="alternate text2" src="/media/uploads/img2.png" style="width: 100%;" />
+            </body></html>
+        """
+        amp_content = amp_img(html_content)
+        self.assertNotEqual(amp_content, html_content)
+        self.assertEqual(amp_content, """
+            <html><body>
+                <amp-img alt="alternate text" src="/media/uploads/img.png" style="width: 100%;" layout="responsive"></amp-img>
+                <amp-img alt="alternate text2" src="/media/uploads/img2.png" style="width: 100%;"  layout="responsive"></amp-img>
+            </body></html>
+        """)
+
+
     @patch('amp_tools.middleware.set_amp_detect')
     @override_settings(AMP_TOOLS_ACTIVE_URLS=['^/$'])
-    def test_set_amp_not_set_url_not_allowed(self, set_amp_detect):
+    def test_set_amp_not_set_url_allowed(self, set_amp_detect):
         request = Mock()
         request.META = MagicMock()
         request.GET = {'amp-content': 'amp'}
@@ -92,3 +109,4 @@ class DetectAMPMiddlewareTests(BaseTestCase):
         middleware = AMPDetectionMiddleware()
         middleware.process_request(request)
         self.assertEqual(0, len(set_amp_detect.call_args_list))
+

@@ -5,6 +5,7 @@ Changelog
 ~~~~~~~~~~~~~~~~~~
 * Add Django 2.1 support
 * Drop Django 1.8 - 1.10, and Python 2.6 support
+* Add filter `amp_img` for html content  - Convert all <img> to <amp-img>
 
 0.1.1 (2016-12-14)
 ~~~~~~~~~~~~~~~~~~

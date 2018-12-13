@@ -97,7 +97,7 @@ source:
 	$(PYTHON) setup.py sdist
 
 test: develop
-	@$(WITH_VENV) $(RUNTESTS) test
+	@$(WITH_VENV) $(MANAGE) test
 
 .PHONY: all docs clean cleanall check develop install lint opendoc release \
 	server shell source test

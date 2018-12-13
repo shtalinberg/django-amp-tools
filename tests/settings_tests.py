@@ -16,32 +16,26 @@ INSTALLED_APPS = [
     'amp_tools',
 ]
 
-TEMPLATE_CONTEXT_PROCESSORS = [
-    "django.contrib.auth.context_processors.auth",
-    'django.template.context_processors.debug',
-    'django.template.context_processors.i18n',
-    'django.template.context_processors.request',
-    'django.template.context_processors.media',
-]
-
-TEMPLATE_LOADERS = [
-    'amp_tools.loader.Loader',
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-]
-
-TEMPLATE_DIRS = [
-    join_to_project('templates'),
-]
-
 
 TEMPLATES = [{
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    'DIRS': TEMPLATE_DIRS,
+    'DIRS': [
+        join_to_project('templates'),
+    ],
     # 'APP_DIRS': True,
     'OPTIONS': {
-        'context_processors': TEMPLATE_CONTEXT_PROCESSORS,
-        'loaders': TEMPLATE_LOADERS,
+        'context_processors': [
+            "django.contrib.auth.context_processors.auth",
+            'django.template.context_processors.debug',
+            'django.template.context_processors.i18n',
+            'django.template.context_processors.request',
+            'django.template.context_processors.media',
+        ],
+        'loaders': [
+            'amp_tools.loader.Loader',
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        ],
     },
 }]
 

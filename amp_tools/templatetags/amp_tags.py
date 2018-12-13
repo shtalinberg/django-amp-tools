@@ -1,16 +1,25 @@
 from __future__ import unicode_literals
 
+import re
+
 from django import template
 from django.contrib.sites.models import Site
 from django.http import QueryDict
 from django.utils.safestring import mark_safe
-from django.utils.encoding import force_text
-from django.template import Library, Node, Variable
+# from django.utils.encoding import force_text
+from django.template import Node, Variable
 from django.template.defaultfilters import stringfilter
 
 register = template.Library()
 
 from amp_tools.settings import settings
+
+# For the full HTML element - <img src="image.jpg">
+RE_IMG = re.compile('(<img.+?src=["\'].+?["\'].+?>)')
+
+# For the image url itself - "image.jpg"
+RE_IMG_SRC = re.compile('src=["\'](.+?)["\']')
+
 
 
 @register.simple_tag
@@ -85,4 +94,8 @@ def amp_urlparam(value):
 @stringfilter
 def amp_img(html_code):
     """Convert <img> to <amp-img>"""
-    return html_code.replace("<img", "<amp-img")
+    img_elements = RE_IMG.findall(html_code)
+    for img_el in img_elements:
+        replace_str = img_el.replace('/>','>').replace('>', ' layout="responsive"></amp-img>')
+        html_code = html_code.replace(img_el, replace_str)
+    return html_code.replace('<img', '<amp-img')
