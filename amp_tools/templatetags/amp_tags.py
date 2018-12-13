@@ -98,4 +98,26 @@ def amp_img(html_code):
     for img_el in img_elements:
         replace_str = img_el.replace('/>','>').replace('>', ' layout="responsive"></amp-img>')
         html_code = html_code.replace(img_el, replace_str)
+    html_code = html_code.replace("</img>", "</amp-img>")
     return html_code.replace('<img', '<amp-img')
+
+
+@register.filter(name='amp_safe')
+@stringfilter
+def amp_safe(html_body):
+    html_body = re.sub(
+        r'<img (alt="[^"]*") (class="[^"]*") (src="[^"]*") style="height:(\d+)px;.*width:(\d+)px" />',
+        r'<img \1 \2 \3 style="height:\4px; width:\5px" width="\5" height="\4" />',
+        html_body
+    )
+    html_body = re.sub(
+        r'<img (alt="[^"]*") (class="[^"]*") (src="[^"]*") style=".*width:(\d+)%" />',
+        r'<img \1 \2 \3 style="width:\4%" />',
+        html_body
+    )
+
+    html_body = re.sub(r'style="[^"]+"', '', html_body)
+    html_body= amp_img(html_body)
+    return mark_safe(html_body)
+
+
