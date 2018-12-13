@@ -10,7 +10,7 @@ django-amp-tools
 
 .. image:: https://img.shields.io/pypi/pyversions/django-amp-tools.svg
 
-.. image:: https://img.shields.io/badge/django-1.8%20or%20newer-green.svg
+.. image:: https://img.shields.io/badge/django-1.11%20or%20newer-green.svg
 
 
 
