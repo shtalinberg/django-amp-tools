@@ -74,7 +74,7 @@ class DetectAMPMiddlewareTests(BaseTestCase):
 
         html_content = """
             <html><body>
-                <img alt="alternate text" src="/media/uploads/img.png" style="width: 100%;">
+                <img alt="alternate text" src="/media/uploads/img.png" width="800" height="600" style="width: 100%;">
                 <img alt="alternate text2" src="/media/uploads/img2.png" style="width: 100%;" />
             </body></html>
         """
@@ -82,8 +82,8 @@ class DetectAMPMiddlewareTests(BaseTestCase):
         self.assertNotEqual(amp_content, html_content)
         self.assertEqual(amp_content, """
             <html><body>
-                <amp-img alt="alternate text" src="/media/uploads/img.png" style="width: 100%;" layout="responsive"></amp-img>
-                <amp-img alt="alternate text2" src="/media/uploads/img2.png" style="width: 100%;"  layout="responsive"></amp-img>
+                <amp-img alt="alternate text" src="/media/uploads/img.png" width="800" height="600" style="width: 100%;" layout="responsive"></amp-img>
+                <amp-img alt="alternate text2" src="/media/uploads/img2.png" style="width: 100%;"  layout="responsive" width="1.33" height="1"></amp-img>
             </body></html>
         """)
 
@@ -91,8 +91,8 @@ class DetectAMPMiddlewareTests(BaseTestCase):
         self.assertNotEqual(amp_content, html_content)
         self.assertEqual(amp_content, """
             <html><body>
-                <amp-img alt="alternate text" src="/media/uploads/img.png"  layout="responsive"></amp-img>
-                <amp-img alt="alternate text2" src="/media/uploads/img2.png"   layout="responsive"></amp-img>
+                <amp-img alt="alternate text" src="/media/uploads/img.png" width="800" height="600"  layout="responsive"></amp-img>
+                <amp-img alt="alternate text2" src="/media/uploads/img2.png"   layout="responsive" width="1.33" height="1"></amp-img>
             </body></html>
         """)
 
