@@ -11,7 +11,7 @@ from mock import MagicMock, Mock, patch, call
 from amp_tools import get_amp_detect
 from amp_tools.middleware import AMPDetectionMiddleware
 from amp_tools.settings import settings as amp_setting
-from amp_tools.templatetags.amp_tags import amp_img
+from amp_tools.templatetags.amp_tags import amp_img, amp_safe
 
 
 
@@ -87,6 +87,14 @@ class DetectAMPMiddlewareTests(BaseTestCase):
             </body></html>
         """)
 
+        amp_content = amp_safe(html_content)
+        self.assertNotEqual(amp_content, html_content)
+        self.assertEqual(amp_content, """
+            <html><body>
+                <amp-img alt="alternate text" src="/media/uploads/img.png"  layout="responsive"></amp-img>
+                <amp-img alt="alternate text2" src="/media/uploads/img2.png"   layout="responsive"></amp-img>
+            </body></html>
+        """)
 
     @patch('amp_tools.middleware.set_amp_detect')
     @override_settings(AMP_TOOLS_ACTIVE_URLS=['^/$'])
