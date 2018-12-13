@@ -1,1 +1,9 @@
-Base!
+<!DOCTYPE html>{% load i18n amp_tags %}
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    {% block amp-link %}{% amp_canonical_link request %}{% endblock %}
+</head>
+<body>
+    Base!
+</body>
+</html>

@@ -10,10 +10,8 @@ django-amp-tools
 
 .. image:: https://img.shields.io/pypi/pyversions/django-amp-tools.svg
 
-.. image:: https://img.shields.io/badge/django-1.8%20or%20newer-green.svg
+.. image:: https://img.shields.io/badge/django-1.11%20or%20newer-green.svg
 
-.. image:: https://img.shields.io/pypi/dm/django-amp-tools.svg
-    :target:  https://pypi.python.org/pypi/django-amp-tools/
 
 
 .. _introduction:
@@ -22,8 +20,12 @@ django-amp-tools
 in django and gives you tools at your hand to render some different templates
 to deliver an AMP version of your site to the user.
 
-The idea (from django-mobile app) is to keep your views exactly the same but to transparently
-interchange the templates used to render a response. This is done in two steps:
+The initial idea, which has guided the development of this application from django-mobile app,
+is to keep your views exactly the same but to transparently
+interchange the templates used to render a response.
+
+
+This is done in two steps:
 
 1. A middleware determines the client's preference to view your site. E.g. if
    he wants to use the AMP or the standart version.
@@ -50,4 +52,18 @@ is enabled and working.
    ``loaders`` list for ``TEMPLATES`` setting in ``settings.py``.
 
 
-Pull requests are welcome.
+Usage
+=====
+
+See docs/usage.rst
+
+
+**Documentation** is `available online
+<http://django-amp-tools.readthedocs.org/>`_, or in the doc
+directory of the project.
+
+The **source code** for this app is hosted at
+https://github.com/shtalinberg/django-amp-tools.
+
+Pull requests are welcome. See
+<http://django-amp-tools.readthedocs.io/en/latest/contributing.html>`_.

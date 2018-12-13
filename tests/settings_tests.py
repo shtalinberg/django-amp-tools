@@ -14,36 +14,30 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.admin',
     'amp_tools',
-
-]
-
-TEMPLATE_CONTEXT_PROCESSORS = [
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-]
-
-TEMPLATE_LOADERS = [
-    'amp_tools.loader.Loader',
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
 ]
 
 
 TEMPLATES = [{
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
     'DIRS': [
-        # insert your TEMPLATE_DIRS here
         join_to_project('templates'),
     ],
     # 'APP_DIRS': True,
     'OPTIONS': {
-        'context_processors': TEMPLATE_CONTEXT_PROCESSORS,
-        'loaders': TEMPLATE_LOADERS,
+        'context_processors': [
+            "django.contrib.auth.context_processors.auth",
+            'django.template.context_processors.debug',
+            'django.template.context_processors.i18n',
+            'django.template.context_processors.request',
+            'django.template.context_processors.media',
+        ],
+        'loaders': [
+            'amp_tools.loader.Loader',
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        ],
     },
 }]
-
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -52,10 +46,6 @@ MIDDLEWARE_CLASSES = (
     'amp_tools.middleware.AMPDetectionMiddleware',
 )
 
-
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_ROOT, 'templates'),
-)
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 RUNTESTS_DIR = os.path.abspath(os.path.dirname(__file__))

@@ -1,0 +1,363 @@
+/* Generic AMP styling */
+
+.alignright {
+    float: right;
+}
+
+.alignleft {
+    float: left;
+}
+
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.amp-post-enforced-sizes {
+    /** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.amp-post-unknown-size img {
+    /** Worst case scenario when we can't figure out dimensions for an image. **/
+    /** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+    object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-post-content,
+.amp-post-title-bar div {
+    margin: 0 auto;
+}
+
+html {
+    background: #FAFAFA;
+}
+
+body {
+    background: #ffffff;
+    color: #223344;
+    font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+    font-weight: 300;
+    line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+    margin: 0 0 1em;
+    padding: 0;
+}
+
+a,
+a:visited {
+    color: #FF8C00;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: #223344;
+}
+
+/* Quotes */
+
+blockquote {
+    color: #223344;
+    background: rgba(127,127,127,.125);
+    border-left: 2px solid #FF8C00;
+    margin: 8px 0 24px 0;
+    padding: 16px;
+}
+
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-post-meta,
+.amp-post-header div,
+.amp-post-title,
+.wp-caption-text,
+.amp-post-tax-category,
+.amp-post-tax-tag,
+.amp-post-comments-link,
+.amp-post-footer p,
+.back-to-top {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-site-header {
+    background-color: #FFFFFF;
+}
+
+.amp-site-header div {
+    color: #223344;
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0 auto;
+    max-width: calc(840px - 32px);
+    padding: .875em 16px;
+    position: relative;
+}
+
+.amp-site-header a {
+    color: #223344;
+    text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-site-header .amp-site-icon {
+    /** site icon is 32px **/
+    /*background-color: #CCCCCC;
+    border: 1px solid #CCCCCC;
+    border-radius: 50%;*/
+    position: absolute;
+    right: 18px;
+    top: 10px;
+}
+
+/* Article */
+
+.amp-post-article {
+    color: #223344;
+    font-weight: 400;
+    margin: 1.5em auto;
+    max-width: 840px;
+    /*overflow-wrap: break-word;*/
+    word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-post-article-header {
+    align-items: center;
+    align-content: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 1.5em 16px 1.5em;
+}
+
+.amp-post-title {
+    color: #223344;
+    display: block;
+    flex: 1 0 100%;
+    font-weight: 900;
+    margin: 0 0 .625em;
+    width: 100%;
+}
+
+/* Article Meta */
+
+.amp-post-meta {
+    color: #223344;
+    display: inline-block;
+    flex: 2 1 50%;
+    font-size: .875em;
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0;
+}
+
+.amp-post-article-header .amp-post-meta:last-of-type {
+    text-align: right;
+}
+
+.amp-post-article-header .amp-post-meta:first-of-type {
+    text-align: left;
+}
+
+.amp-post-byline amp-img,
+.amp-post-byline .amp-post-author {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.amp-post-byline amp-img {
+    border: 1px solid #FF8C00;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 6px;
+}
+
+.amp-post-posted-on {
+    text-align: right;
+}
+
+/* Featured image */
+
+.amp-post-article-featured-image {
+    margin: 0 0 1em;
+}
+.amp-post-article-featured-image amp-img {
+    margin: 0 auto;
+}
+.amp-post-article-featured-image.wp-caption .wp-caption-text {
+    margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-post-article-content {
+    margin: 0 16px;
+}
+
+.amp-post-article-content ul,
+.amp-post-article-content ol {
+    margin-left: 1em;
+}
+
+.amp-post-article-content amp-img {
+    margin: 0 auto;
+}
+
+.amp-post-article-content amp-img.alignright {
+    margin: 0 0 1em 16px;
+}
+
+.amp-post-article-content amp-img.alignleft {
+    margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.amp-caption {
+    padding: 0;
+}
+
+.amp-caption.alignleft {
+    margin-right: 16px;
+}
+
+.amp-caption.alignright {
+    margin-left: 16px;
+}
+
+.amp-caption .amp-caption-text {
+    border-bottom: 1px solid #CCCCCC;
+    color: #223344;
+    font-size: .875em;
+    line-height: 1.5em;
+    margin: 0;
+    padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+    background: #CCCCCC;
+    margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+    background: #CCCCCC;
+    margin: 0 -16px 1.5em;
+}
+
+.amp-post-article-content amp-carousel amp-img {
+    border: none;
+}
+
+amp-carousel > amp-img > img {
+    object-fit: contain;
+}
+
+.amp-post-iframe-placeholder {
+    background: #CCCCCC;
+    background-size: 48px 48px;
+    min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-post-article-footer .amp-post-meta {
+    display: block;
+}
+
+.amp-post-tax-category,
+.amp-post-tax-tag {
+    color: #FF8C00;
+    font-size: .875em;
+    line-height: 1.5em;
+    margin: 1.5em 16px;
+}
+
+.amp-post-comments-link {
+    color: #FF8C00;
+    font-size: .875em;
+    line-height: 1.5em;
+    text-align: center;
+    margin: 2.25em 0 1.5em;
+}
+
+.amp-post-comments-link a {
+    border-style: solid;
+    border-color: #CCCCCC;
+    border-width: 1px 1px 2px;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #FF8C00;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    margin: 0 auto;
+    max-width: 200px;
+    padding: 11px 16px;
+    text-decoration: none;
+    width: 50%;
+    -webkit-transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-site-footer {
+    border-top: 1px solid #CCCCCC;
+    margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-site-footer div {
+    margin: 0 auto;
+    max-width: calc(840px - 32px);
+    padding: 1.25em 16px 1.25em;
+    position: relative;
+}
+
+.amp-site-footer h2 {
+    font-size: 1em;
+    line-height: 1.375em;
+    margin: 0 0 .5em;
+}
+
+.amp-site-footer p {
+    color: #223344;
+    font-size: .8em;
+    line-height: 1.5em;
+    margin: 0 85px 0 0;
+}
+
+.amp-site-footer a {
+    text-decoration: none;
+}
+
+.back-to-top {
+    bottom: 1.275em;
+    font-size: .8em;
+    font-weight: 600;
+    line-height: 2em;
+    position: absolute;
+    right: 16px;
+}
